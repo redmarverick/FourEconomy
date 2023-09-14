@@ -7,10 +7,70 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+  <% unless @is_splash_index %>
+    <%= render partial: 'layouts/navs' %>
+  <% end %>
     <%= yield %>
+  <script async>
+      document.addEventListener('DOMContentLoaded', function() {
+          const submitFormButton = document.getElementById('submitFormButton');
+          if (submitFormButton) {
+              submitFormButton.addEventListener('click', function() {
+                  const form = document.querySelector('form');
+                  form.submit();
+              });
+          } else {
+              console.error('Button element not found');
+          }
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+          // open
+          const burger = document.querySelectorAll('.navbar-burger');
+          const menu = document.querySelectorAll('.navbar-menu');
+
+          if (burger.length && menu.length) {
+              for (var i = 0; i < burger.length; i++) {
+                  burger[i].addEventListener('click', function() {
+                      for (var j = 0; j < menu.length; j++) {
+                          menu[j].classList.toggle('hidden');
+                      }
+                  });
+              }
+          }
+
+          // close
+          const close = document.querySelectorAll('.navbar-close');
+          const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+          if (close.length) {
+              for (var i = 0; i < close.length; i++) {
+                  close[i].addEventListener('click', function() {
+                      for (var j = 0; j < menu.length; j++) {
+                          menu[j].classList.toggle('hidden');
+                      }
+                  });
+              }
+          }
+
+          if (backdrop.length) {
+              for (var i = 0; i < backdrop.length; i++) {
+                  backdrop[i].addEventListener('click', function() {
+                      for (var j = 0; j < menu.length; j++) {
+                          menu[j].classList.toggle('hidden');
+                      }
+                  });
+              }
+          }
+      });
+
+  </script>
   </body>
 </html>
