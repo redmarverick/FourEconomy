@@ -10,14 +10,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
-  username: postgres
-  password: 12345
-  host: localhost
-
 development:
-  <<: *default
-  database: 4Economy
-  secret_key_base: <%= ENV["RAILS_SECRET_KEY_BASE"] %>
+  name: 4economy
+  region: Oregon
+  plan: free
+  databaseName: foureconomy
+  user: postgress
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
