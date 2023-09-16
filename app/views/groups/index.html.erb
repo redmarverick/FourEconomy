@@ -1,0 +1,33 @@
+<div class="h-screen flex flex-col items-center justify-start max-w-screen-sm mx-auto bg-gray-200">
+  <% if @groups.any? %>
+    <div class="min-h-content w-full p-2">
+      <% @groups.includes(:entities).each do |group| %>
+        <div class="p-2 flex bg-white items-center mb-2">
+          <div class="h-[80px] w-[80px] bg-cover" style="background-image: url('<%= group.icon %>')"></div>
+          <div class="pl-2 h-20 flex flex-col w-[90%] justify-center">
+            <div class="flex h-full w-full justify-between">
+              <div class="flex h-full items-center">
+                <span class="text-gray-500"><%= link_to group.name, group %></span>
+              </div>
+              <div class="flex h-full items-center">
+                <span class="text-black font-bold">
+                  <% sum_amount = group.entities.sum(:amount) %>
+                  <%= number_to_currency(sum_amount, unit: '$', precision: 2) %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>There are no categories.</p>
+  <% end %>
+</div>
+<div class="fixed bottom-0 right-0 p-4 w-full">
+  <div class="max-w-screen-sm mx-auto pb-20 px-20 flex justify-end">
+    <a href="<%= new_group_path %>">
+      <i id="new-group" class="fixed bi bi-plus-circle-fill z-90 rounded-full drop-shadow-lg flex justify-center items-center bg-white text-green-400 text-6xl hover:drop-shadow-2xl"></i>
+    </a>
+  </div>
+</div>
