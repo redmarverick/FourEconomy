@@ -1,0 +1,19 @@
+<div class="h-screen flex flex-col items-center justify-start max-w-screen-sm mx-auto bg-gray-200">
+  <%= form_with(model: @entity, url: entities_path, method: :post, html: { class: 'w-full mb-4' }) do |form| %>
+    <%= form.text_field :name, class: 'w-full bg-white border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', autofocus: true, placeholder: 'Transaction Name' %>
+    <%= form.number_field :amount, class: 'w-full bg-white border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', autofocus: true, placeholder: 'Amount' %>
+    <%= form.collection_check_boxes(:group_ids, current_user.groups, :id, :name) %>
+    <% if @entity.errors.any? %>
+      <div class="alert alert-danger">
+        <h2>Errors:</h2>
+        <ul>
+          <% @entity.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+<% end %>
+</div>
+
