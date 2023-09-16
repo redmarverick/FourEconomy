@@ -14,8 +14,6 @@ gem 'cancancan'
 
 gem 'devise'
 
-gem 'rspec-rails'
-
 gem 'turbolinks'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
