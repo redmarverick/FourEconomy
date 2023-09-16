@@ -80,7 +80,7 @@ run ```rspec spec```
 
 ### Deployment
 
-No deployment implemented yet
+[https://rails-ku1b.onrender.com](https://rails-ku1b.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
