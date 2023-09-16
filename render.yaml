@@ -1,19 +1,19 @@
 databases:
-  - name: postgres
-    ipAllowList: []
-    databaseName: 4Economy
+  # db 1
+  - name: 4economy
+  # db 2
+  - name: 4economy
+    region: frankfurt
+    plan: free
+    databaseName: 4economy
     user: postgres
-
-services:
-  - type: web
-    name: 4Economy
-    env: ruby
-    buildCommand: "./render-build.sh"
-    startCommand: "bundle exec rails s"
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: postgres
-          property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
+    ipAllowList: # optional (defaults to allow all)
+      - source: 203.0.113.4/30
+        description: office
+      - source: 198.51.100.1
+        description: home
+  # db 3
+  - name: 4economy
+    databaseName: 4economy
+    ipAllowList: [] # only allow internal connections
+    postgresMajorVersion: 15 # optional (defaults to the latest available, supported versions are 11, 12, 13, 14 and 15)
