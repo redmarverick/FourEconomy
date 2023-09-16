@@ -1,0 +1,6 @@
+<div class="h-screen flex flex-col items-center justify-start max-w-screen-sm mx-auto bg-gray-200">
+  <%= form_with(model: @group, url: groups_path, html: { class: 'w-full mb-4' }) do |form| %>
+      <%= form.text_field :name, class: 'w-full bg-white border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', autofocus: true, placeholder: 'Group Name' %>
+      <%= form.text_field :icon, class: 'w-full bg-white border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', autofocus: true, placeholder: 'Icon Link' %>
+  <% end %>
+</div>
