@@ -1,19 +1,19 @@
 databases:
   # db 1
-  - name: 4economy
+  - name: foureconomy
   # db 2
-  - name: 4economy
+  - name: foureconomy
     region: frankfurt
     plan: free
-    databaseName: 4economy
-    user: postgres
+    databaseName: foureconomy
+    user: app_user
     ipAllowList: # optional (defaults to allow all)
       - source: 203.0.113.4/30
         description: office
       - source: 198.51.100.1
         description: home
   # db 3
-  - name: 4economy
-    databaseName: 4economy
+  - name: foureconomy
+    databaseName: foureconomy
     ipAllowList: [] # only allow internal connections
     postgresMajorVersion: 15 # optional (defaults to the latest available, supported versions are 11, 12, 13, 14 and 15)
