@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
     @header_text = 'EDIT'
-    @button_text = 'NEXT'
+    @button_text = 'Save'
     super
   end
   protected
