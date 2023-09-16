@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @button_text = 'Save'
     super
   end
+
   protected
 
   def configure_permitted_parameters
