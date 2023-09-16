@@ -8,6 +8,14 @@ gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 
 gem "rubocop"
 
+gem 'pg'
+
+gem 'cancancan'
+
+gem 'devise'
+
+gem 'turbolinks'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -53,6 +61,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem 'letter_opener'
 end
 
 group :development do
@@ -71,4 +80,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
 end

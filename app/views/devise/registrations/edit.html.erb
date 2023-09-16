@@ -1,0 +1,9 @@
+<div class="h-screen flex flex-col items-center justify-start max-w-screen-sm mx-auto pt-4 bg-gray-200">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.email_field :email, class: 'w-full bg-white border-b border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', autofocus: true, placeholder: 'Email', autocomplete: 'email' %>
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, class: 'w-full bg-white border-none border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', placeholder: 'New Password', autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, class: 'w-full bg-white border-none border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', placeholder: 'New Password', autocomplete: "new-password" %>
+    <%= f.password_field :current_password, class: 'w-full bg-white border-none border-gray-300 py-2 px-2 focus:outline-none focus:border-gray-500', placeholder: 'Current Password', autocomplete: "current-password" %>
+<% end %>
+</div>

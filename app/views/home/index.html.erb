@@ -1,0 +1,85 @@
+<div class="h-screen flex flex-col items-center justify-start max-w-screen-sm mx-auto bg-gray-200">
+
+  <div class="w-full grid bg-blue-500 grid-cols-3 gap-0">
+    <div id="empty" class="text-center order-1 p-2">
+      <!-- Empty content -->
+    </div>
+    <div id="recent" class="text-center p-2 text-white order-2 text-opacity-100 hover:bg-blue-400"><a href="#">Most recent</a></div>
+    <div id="ancient" class="text-center p-2 text-white order-3 text-opacity-75 hover:bg-blue-400"><a href="#">Most ancient</a></div>
+  </div>
+
+  <!-- New div with flex layout -->
+  <div class="w-full bg-white py-6 px-2 flex justify-between">
+    <span class="text-gray-500">Gift credit</span>
+    <span class="font-bold">$45.00</span>
+  </div>
+
+  <div class="min-h-content w-full p-2">
+    <div class="p-2 flex bg-white items-center">
+      <div class="h-[80px] w-[80px] bg-yellow-500"></div>
+      <div class="pl-2 h-20 flex flex-col w-[90%] justify-center">
+        <div class="flex h-full w-full justify-between">
+          <div class="flex h-full items-end">
+            <span class="text-gray-500">MC Donnalds</span>
+          </div>
+          <div class="flex h-full items-end">
+            <span class="text-black font-bold">$17.00</span>
+          </div>
+        </div>
+        <div class="pt-4">
+          <span class="text-gray-500 text-sm">12 Apr 2023</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="fixed bottom-0 right-0 p-4 w-full">
+  <div class="max-w-screen-sm mx-auto pb-20 px-20 flex justify-end">
+    <button onclick="buttonHandler()" title="Contact Sale">
+      <i class="fixed bi bi-plus-circle-fill z-90 rounded-full drop-shadow-lg flex justify-center items-center bg-white text-green-400 text-6xl hover:drop-shadow-2xl"></i>
+    </button>
+  </div>
+</div>
+<script>
+    // Declare variables in the outer scope
+    let empty = document.getElementById('empty');
+    let recent = document.getElementById('recent');
+    let ancient = document.getElementById('ancient');
+
+    if (recent) {
+        recent.addEventListener('click', function () {
+            if (recent.classList.contains('order-1')) {
+                recent.classList.remove('order-1');
+                recent.classList.add('order-2');
+                ancient.classList.remove('text-opacity-100');
+                ancient.classList.add('text-opacity-75');
+                recent.classList.remove('text-opacity-75');
+                recent.classList.add('text-opacity-100');
+                empty.classList.remove('order-3');
+                empty.classList.add('order-1');
+                ancient.classList.remove('order-2');
+                ancient.classList.add('order-3');
+            }
+        });
+    }
+
+    if (ancient) {
+        ancient.addEventListener('click', function () {
+            if (recent.classList.contains('order-2')) {
+                recent.classList.remove('order-2');
+                recent.classList.add('order-1');
+                recent.classList.remove('text-opacity-100');
+                recent.classList.add('text-opacity-75');
+                ancient.classList.remove('text-opacity-75');
+                ancient.classList.add('text-opacity-100');
+                empty.classList.remove('order-1');
+                empty.classList.add('order-3');
+                ancient.classList.remove('order-3');
+                ancient.classList.add('order-2');
+                ancient.style.opacity = '1';
+            }
+        });
+    }
+
+</script>
