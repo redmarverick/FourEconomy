@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
     @group.creator_id = current_user.id
 
     if @group.save
-      redirect_to groups_path, notice: 'Group was successfully created.'
+      redirect_to home_path, notice: 'Group was successfully created.'
     else
       render :new
     end
