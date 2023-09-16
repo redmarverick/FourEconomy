@@ -1,3 +1,6 @@
 databases:
-  # db 1
-  - name: foureconomy
+  - name: 4economy
+    region: Oregon
+    plan: free
+    databaseName: foureconomy
+    user: postgress
