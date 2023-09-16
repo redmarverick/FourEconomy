@@ -1,12 +1,18 @@
 <nav class="bg-blue-500 p-4 flex items-center justify-between h-12 flex-row max-w-screen-sm mx-auto p-2">
   <!-- Left Arrow Icon -->
-  <% if !user_signed_in? %>
+  <% if !user_signed_in? || (user_signed_in? && request.path != home_path) %>
     <!-- Back button for logged-in users -->
     <div class="text-white text-2xl">
       <a href="<%= splash_index_path %>" class="text-white text-2xl">
         <i class="fas fa-arrow-left"></i>
       </a>
     </div>
+    <h1 class="text-white pnbold text-xl"><%= @header_text %></h1>
+
+    <button type="submit" class="text-white text-align-right" id="submitFormButton">
+      <%= @button_text %>
+    </button>
+    </nav>
   <% else %>
     <nav class="relative py-4 flex justify-between items-center">
       <div class="">
@@ -18,56 +24,68 @@
         </button>
       </div>
     </nav>
-    <div class="navbar-menu relative z-50 hidden">
-      <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-      <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-        <div class="flex items-center mb-8">
-          <a class="mr-auto text-3xl font-bold leading-none" href="#">
-          </a>
-          <button class="navbar-close">
-            <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <div>
-          <ul>
-            <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
-            </li>
-            <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
-            </li>
-            <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
-            </li>
-            <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
-            </li>
-            <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
-            </li>
-            <% if user_signed_in? %>
-              <li class="mb-1">
-                <%= link_to 'Profile', edit_user_registration_path, class: 'block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded' %>
-              </li>
-              <li class="mb-1">
-                <%= button_to(destroy_user_session_path, method: :delete) do %>
-                  <button class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded">Log Out</button>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+    <h1 class="text-white pnbold text-xl"><%= @header_text %></h1>
+
+    <button type="submit" class="text-white text-align-right" id="submitFormButton">
+      <%= @button_text %>
+    </button>
+    </nav>
+<div class="navbar-menu flex-row max-w-screen-sm mx-auto hidden">
+  <nav class="flex flex-col h-screen h-screen-sm w-screen-sm max-w-screen-sm py-6 pl-6 bg-blue-500 border-r">
+    <div class="flex items-center mb-8 mr-6">
+      <a class="mr-auto text-3xl font-bold leading-none" href="#">
+      </a>
+      <button class="navbar-close">
+        <svg class="h-6 w-6 text-white cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
-  <% end %>
+    <div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-full overflow-hidden w-24 h-24">
+          <img src="https://avatars.githubusercontent.com/u/15636209?v=4" alt="User Avatar">
+        </div>
+        <p class="my-4 text-center text-white text-2xl"><%= @user.name %></p>
+      </div>
+      <ul>
+        <li class="mb-1 flex items-center">
+          <div class="rounded-full w-10 h-10 pt-0.5 flex flex-col items-center justify-between border border-white">
+            <i class="bi bi-gear text-white text-2xl"></i>
+          </div>
+          <div class="border-b ml-4 border-white w-[85%]">
+            <a class="block p-4 pl-0 text-xl text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="<%= home_path %>">Categories</a>
+          </div>
+        </li>
+        <li class="mb-1 flex items-center">
+          <div class="rounded-full w-10 h-10 pt-0.5 flex flex-col items-center justify-between border border-white">
+            <i class="bi bi-geo-alt text-white text-2xl"></i>
+          </div>
+          <div class="border-b ml-4 border-white w-[85%]">
+            <a class="block p-4 pl-0 text-xl text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="<%= new_group_path %>">New Categories</a>
+          </div>
+        </li>
+        <li class="mb-1 flex items-center">
+          <div class="rounded-full w-10 h-10 flex flex-col items-center justify-between border border-white">
+            <i class="bi bi-box-arrow-up text-2xl text-white"></i>
+          </div>
+          <div class="border-b ml-4 border-white w-[85%]">
+            <a class="block p-4 pl-0 text-xl text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="<%= new_entity_path %>">New Transactions</a>
+          </div>
+        </li>
+        <li class="mb-1 flex items-center">
+          <div class="rounded-full w-10 h-10 flex flex-col items-center justify-between border border-white">
+            <i class="bi bi-box-arrow-right ml-1 mt-0.5 text-2xl text-white"></i>
+          </div>
+          <div class="ml-4 w-[85%] hover:bg-blue-50 hover:text-blue-600 rounded">
+            <%= button_to(destroy_user_session_path, class: 'block p-4 pl-0 text-xl text-white hover:bg-blue-50 hover:text-blue-600 rounded', method: :delete) do %>
+              Log Out
+            <% end %>
+          </div>
+        </li>
+      </ul>
 
-
-  <!-- Centered Header -->
-  <h1 class="text-white text-xl"><%= @header_text %></h1>
-
-  <button type="submit" class="text-white text-align-right" id="submitFormButton">
-    <%= @button_text %>
-  </button>
-</nav>
+    </div>
+  </nav>
+</div>
+<% end %>
