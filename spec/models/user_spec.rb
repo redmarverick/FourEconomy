@@ -4,18 +4,18 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it "is valid with a name" do
-    user = User.new(name: "John Doe")
+    user = User.create(name: 'john', email: 'user@gmail.com', password: 'user@123')
     expect(user).to be_valid
   end
 
   it "is invalid without a name" do
-    user = User.new(name: nil)
+    user = User.create(name: nil)
     user.valid?
     expect(user.errors[:name]).to include("can't be blank")
   end
 
   it "can have many groups" do
-    user = User.create(name: "John Doe")
+    user = User.create(name: 'john', email: 'user@gmail.com', password: 'user@123')
     group1 = Group.create(name: "Group 1")
     group2 = Group.create(name: "Group 2")
 
@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
   end
 
   it "can have many groups" do
-    user = User.create(name: "John Doe")
+    user = User.create(name: 'john', email: 'user@gmail.com', password: 'user@123')
     group1 = Group.create(name: "Group 1")
     group2 = Group.create(name: "Group 2")
 
